@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h4>{{testFilter()}}</h4>
+    <h4>{{testMap()}}</h4>
+    <h4>{{testReduce()}}</h4>
+    <h4>{{testfull()}}</h4>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    let demo1=new Vue({
+        el:'#app',
+        data:{
+            message:'amazing vue',
+            list:[12,3,4,94,7,8],
+            newList:[],
+            doubleNewList:[],
+
+        },methods:{
+            testFilter(){
+                //todo:过滤小于10的数
+                this.newList=this.list.filter(function(i){
+                    return i<10
+                })
+                console.log(this.newList)
+                return this.newList
+            },
+            testMap(){
+                //todo:并且每个数字乘2
+                this.doubleNewList=this.newList.map(function(i){
+                    return i*2
+                })
+                return this.doubleNewList
+            },
+            testReduce(){
+                //todo:把所有数据做加法
+                return this.doubleNewList.reduce(function (previous , i) {
+                    return previous+i
+                },0)
+                //todo：i每次取 this.doubleNewList的值
+                //todo：44行的0 其实是previous的初始值
+            },
+            testfull(){
+                return this.list.filter(function(i){
+                    return i<10
+                }).map(function(i){
+                    return i*2
+                }).reduce(function(previous,i){
+                    return previous+i;
+                },0)
+            }
+        }
+    })
+</script>
+
+
+</body>
+</html>

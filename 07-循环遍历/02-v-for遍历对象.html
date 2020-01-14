@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h4>遍历对象的时候时候只获取一个值 得到的是value<br>
+    如果获取多个值 第一个是value 第二个是key 的三个是index</h4>
+    <ul>
+        <li v-for="(value,key,index) in Lisa">{{index+1}}:{{key}}:{{value}}</li>
+    </ul>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    let demo1=new Vue({
+        el:'#app',
+        data:{
+            message:'amazing vue',
+            Lisa:{
+                name:'lisa',
+                age:18,
+                sex:'female',
+                score:97
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h4 v-show="isShow" id="v-show判断">{{message}}</h4>
+    <h4 v-if="isShow" id="v-if判断">{{message}}</h4>
+    解释：v-show 和 v-if的区别<br>
+    v-if不会存在在dom中<br>
+    v-show存在dom中 但是增加样式style="display: none;"<br>
+    如果频繁切换要不要显示 使用v-show<br>
+    如果仅一次切换 使用v-if<br>
+    <img src="../img/v-show.png">
+</div>
+
+
+<script src="../js/vue.js"></script>
+<script>
+    let demo1=new Vue({
+        el:'#app',
+        data:{
+            message:'amazing vue',
+            isShow:false
+        }
+    })
+</script>
+</body>
+</html>

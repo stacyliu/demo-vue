@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h4>{{firstName +" " +lastName}}</h4>
+    <h4>{{fullName2}}</h4>
+    <h4>{{newName}}</h4>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    let demo1=new Vue({
+        el:'#app',
+        data:{
+            message:'amazing vue',
+            firstName:'lisa',
+            lastName:"Simpsons",
+            newName:''
+        },
+        computed:{
+            fullName:function(){
+                return this.firstName+" "+this.lastName
+            },
+            fullName2:{
+                get:function(){
+                    return this.firstName+" "+this.lastName
+                },
+                set:function(newValue){
+                    //一般不需要设置set方法
+                    //其实是一个只读属性
+                    this.newName=newValue
+                    //使用的时候 在console输入 demo1.fullName2='sss'
+                    //网页就会显示 <h4>sss</h4>
+                }
+            }
+        },
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+    <button @click="button1"> Button1 </button>
+    <br>
+    <button @click="button2(123)"> Button2(123)传参数的 </button>
+    <br>
+    <button @click="button2()"> Button2()没有传参的 undefined </button>
+    <br>
+    <button @click="button2"> Button2 没有括号 可以拿到event对象 [object MouseEvent]  </button>
+    <br>
+    <button @click="button3(123,$event)"> Button3(123,$event) 通过 $event 获取鼠标事件 </button>
+    <br>
+    <button @click="button3(abc,$event)"> Button3(abc,$event) abc报错 把abc当成变量</button>
+    <br>
+    <button @click="button3('abc',event)"> Button3('abc',$event) abc不报错 把abc当成字符串</button>
+    <br>
+    <h4>{{text}}</h4>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    let demo1=new Vue({
+        el:'#app',
+        data:{
+            text : "",
+        },
+        methods:{
+            button1(){
+                console.log("btn1")
+                this.text="btn1"
+            },
+            button2(abc){
+                console.log("btn2----参数1"+abc)
+                this.text="btn2----参数1"+abc
+            },
+            button3(abc,event){
+                console.log("btn3----参数1"+abc+"----参数2"+event)
+                this.text="btn3----参数1"+abc+"----参数2"+event
+            }
+        }
+    })
+</script>
+</body>
+</html>

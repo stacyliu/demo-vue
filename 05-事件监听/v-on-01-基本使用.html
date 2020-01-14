@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h4>{{count}}</h4>
+    <button v-on:click="count++">+</button>
+    <button v-on:click="count--">-</button>
+
+<!--    方法不需要参数时不加（）-->
+    <button @click="add">+</button>
+    <button @click="min">-</button>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    let demo1=new Vue({
+        el:'#app',
+        data:{
+            count : 0,
+        },
+        methods:{
+            add(){
+                return this.count++
+            },
+            min(){
+                return this.count--
+            }
+        }
+    })
+</script>
+</body>
+</html>

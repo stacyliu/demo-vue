@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    const sex='female'
+    const grade='2'
+    const lisa = {
+        name : "lisa",
+        score : 93,
+        //ES5方法和引用属性的普通写法
+        play: function(){
+            console.log("playing")
+        },
+        grade : grade,
+        //ES5的 增强写法
+        study(){
+            console.log("studying")
+        },
+        sex
+    }
+    console.log(lisa)
+    //1.属性的增强写法
+
+</script>
+</body>
+</html>

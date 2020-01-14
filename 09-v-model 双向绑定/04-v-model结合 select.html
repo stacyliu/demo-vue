@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h4>单选:{{fruit}}</h4><br>
+    <select name="selection" id="singleChoice" v-model="fruit">
+        <option value="苹果">苹果</option>
+        <option value="香蕉">香蕉</option>
+        <option value="橘子">橘子</option>
+        <option value="草莓">草莓</option>
+        <option value="菠萝">菠萝</option>
+    </select>
+    <h4>多选:{{fruits}}</h4><br>
+    <select name="selection" id="mulitChoice" v-model="fruits" multiple>
+        <option value="苹果">苹果</option>
+        <option value="香蕉">香蕉</option>
+        <option value="橘子">橘子</option>
+        <option value="草莓">草莓</option>
+        <option value="菠萝">菠萝</option>
+    </select>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    let demo1=new Vue({
+        el:'#app',
+        data:{
+            message:'amazing vue',
+            fruit:"橘子",
+            fruits:""
+        }
+    })
+</script>
+</body>
+</html>

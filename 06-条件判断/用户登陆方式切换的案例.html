@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+        <div v-if="isIdLogin">
+            <label for="idLogin">输入账户：</label>
+            <input type="text" id="idLogin" placeholder="id" key="id"><br>
+        </div>
+
+
+        <div v-else>
+            <label for="emailLogin">输入邮箱：</label>
+            <input type="text" id="emailLogin" placeholder="email" key="email"><br>
+        </div>
+        <button @click="changeLoginMethod()">切换登陆方式</button>
+    <br>
+    但是有一个小问题 就是如果在input输入文字 切换方式 输入的文字还在 没有清除<br>
+    通过给两个input设置不同的key 就不能复用 相同的key就可以复用
+
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    let demo1=new Vue({
+        el:'#app',
+        data:{
+            isIdLogin:true
+        },
+        methods:{
+            changeLoginMethod(){
+                console.log(this.isIdLogin)
+                return this.isIdLogin=!this.isIdLogin
+            },
+
+        }
+
+    })
+</script>
+
+</body>
+</html>

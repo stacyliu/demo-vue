@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .redStyle{
+            color: red;
+        }
+        .blueStyle{
+            color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <h4 class="redStyle">{{message}}</h4>
+    <h4 :class="active11111">{{message}}</h4>
+<!--    注意下面的{}-->
+    <h4 v-bind:class="{redStyle:isRed,blueStyle:isBlue}">{{message}}</h4>
+
+    <h4 v-bind:class="getStyle()">{{message}}</h4>
+
+    <button v-on:click="changeColor()">点击变色</button>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    let demo1=new Vue({
+        el:'#app',
+        data:{
+            message:'amazing vue',
+            active11111:'redStyle',
+            isRed:true,
+            isBlue:true
+        },
+        methods:{
+           changeColor: function(){
+               console.log(this.isBlue)
+               this.isBlue=!this.isBlue
+           },
+            getStyle: function () {
+                return {redStyle:this.isRed,blueStyle:this.isBlue}
+            }
+        }
+    })
+</script>
+</body>
+</html>

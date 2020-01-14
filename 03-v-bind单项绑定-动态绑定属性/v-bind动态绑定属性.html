@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <a v-bind:href="link">百度一下</a>
+    <img v-bind:src="imgUrl" alt="" height="80" width="80">
+    <!--以下是语法糖的写法-->
+    <a :href="link">百度一下</a>
+    <img :src="imgUrl" alt="" height="80" width="80">
+
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    const app=new Vue({
+        el:'#app',
+        data:{
+            message:'amazing vue',
+            imgUrl:'https://c-ssl.duitang.com/uploads/item/201604/06/20160406130800_4miua.thumb.700_0.jpeg',
+            link:"http://www.baidu.com"
+        }
+    })
+</script>
+</body>
+</html>

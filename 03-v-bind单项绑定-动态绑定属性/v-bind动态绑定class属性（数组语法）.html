@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h4 :class="['class1','class2','class3']">{{message}}</h4>
+    <h4 :class="[class1,class2,class3]">{{message}}</h4>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    let demo1=new Vue({
+        el:'#app',
+        data:{
+            message:'amazing vue',
+            class1:"aaa",
+            class2:"bbb",
+            class3:"ccc"
+        }
+    })
+</script>
+
+</body>
+</html>

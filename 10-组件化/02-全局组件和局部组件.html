@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">app1
+    <full></full>
+    <part></part>
+</div>
+<br>
+<div id="app2">app2
+    <full></full>
+    <part></part>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const   fullComponent=Vue.extend({
+        template:`
+        <div>
+            <button>全局组件 可以在任意 vue对象中使用(app1 和 app2)</button>
+        </div>
+    `})
+    const   partComponent=Vue.extend({
+        template:`
+        <div>
+            <button>局部组件只在 app2中定义 无法在 app1中显示</button>
+        </div>
+    `})
+
+    //todo:2.注册全局组件 可以在任意 vue 对象中使用
+    Vue.component('full',fullComponent)
+    let demo1=new Vue({
+        el:'#app',
+        data:{
+            message:'amazing vue',
+        },
+        components:{
+
+        }
+
+    })
+    let demo2=new Vue({
+        el:'#app2',
+        data:{
+            message:'amazing vue',
+        },
+        components:{
+            part:partComponent,
+        }
+
+    })
+</script>
+</body>
+</html>

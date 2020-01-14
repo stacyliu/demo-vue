@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h4>{{firstName +" " +lastName}}</h4>
+    <h3 style="color: red">优先使用计算属性 计算使用调5次只计算一次 方法调用五次 方法也真的执行5次 效率低 </h3>
+    <h4>computed:</h4>
+    <h4>{{fullName}}</h4>
+    <h4>{{fullName}}</h4>
+    <h4>{{fullName}}</h4>
+    <h4>{{fullName}}</h4>
+    <h4>{{fullName}}</h4>
+    <h4>method:</h4>
+    <h4>{{getFullName()}}</h4>
+    <h4>{{getFullName()}}</h4>
+    <h4>{{getFullName()}}</h4>
+    <h4>{{getFullName()}}</h4>
+    <h4>{{getFullName()}}</h4>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    let demo1=new Vue({
+        el:'#app',
+        data:{
+            message:'amazing vue',
+            firstName:'lisa',
+            lastName:"Simpsons",
+        },
+        computed:{
+            fullName:function(){
+                console.log("computed")
+                return this.firstName+" "+this.lastName
+            }
+        },
+        methods:{
+            getFullName:function () {
+                console.log("method")
+                return this.firstName+" "+this.lastName
+            }
+        }
+    })
+</script>
+</body>
+</html>

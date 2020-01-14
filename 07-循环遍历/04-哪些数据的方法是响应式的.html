@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h4>{{message}}</h4>
+    <ul>
+        <li v-for="i in list" key="i">{{i}}</li>
+        <button @click="push()">list.push</button> 可以直接更新浏览器展示数据 push()就是响应式的<br>
+        <button @click="index()">list[3]="aaa"</button> 不可以直接更展示的数据 取下标❌不是响应式的<br>
+        <button @click="pop()">list.pop</button> 可以直接更新浏览器展示数据 pop()就是响应式的<br>
+        <button @click="shift()">list.shift</button> 可以直接更新浏览器展示数据 shift()就是响应式的<br>
+        <button @click="unshift()">list.unshift</button> 可以直接更新浏览器展示数据 unshift()就是响应式的<br>
+
+        <button @click="splice()">list.splice</button> 可以直接更新浏览器展示数据 splice()就是响应式的<br>
+
+        <button @click="sort()">list.sort</button> 可以直接更新浏览器展示数据 sort()就是响应式的<br>
+        <button @click="vueset()">Vue.set</button> 可以直接更新浏览器展示数据 vue.set就是响应式的<br>
+
+
+        <button @click="reverse()">list.reverse</button> 可以直接更新浏览器展示数据 reverse()就是响应式的<br>
+    </ul>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    let demo1=new Vue({
+        el:'#app',
+        data:{
+            message:'amazing vue',
+            list:['d','c','b','e','a'],
+        },
+        methods:{
+            push(){
+                this.list.push("aaa")
+            },
+            index(){
+                this.list[3]="aaa"
+            },
+            pop(){
+                this.list.pop()
+            },
+            shift(){
+                this.list.shift()//删除第一个元素
+            },
+            unshift(){
+                this.list.unshift("sss","ddd")//前面添加元素
+            },
+            splice(){
+                //参数：arg1，arg2，arg3**
+                //从arg1开始 删除arg2个参数 并增加arg3**这些参数
+                this.list.splice(2,0,'111','222','333')
+                this.list.splice(2,2,)
+            },
+            sort(){
+                this.list.sort()
+            },
+            reverse(){
+                this.list.reverse()
+            },
+            vueset(){
+                Vue.set(this.list,3,"56456u7654")
+            }
+
+        }
+    })
+</script>
+</body>
+</html>

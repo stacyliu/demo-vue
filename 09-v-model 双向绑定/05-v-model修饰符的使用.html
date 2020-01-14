@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+    v-model.lazy input失去焦点才更新
+    <input type="text" v-model.lazy="message">   {{message}}<br><br>
+    v-model.number age原本是 number 在更改之后默认变成 string 使用 v-model.number 强制 age 一直都是 number<br>
+    <input type="number" v-model.number="age"><br> {{age}}---{{typeof age}}><br><br>
+    v-model.trim 把用户输入的字符串左右的空格删除 (浏览器看不出来因为浏览器在显示上已经处理了左右的空格 但是实际name上没有变化)
+    <input type="text" v-model.trim="name">{{name}}<br><br>
+
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    let demo1=new Vue({
+        el:'#app',
+        data:{
+            message:'amazing vue',
+            age:60,
+            name:""
+        }
+    })
+</script>
+</body>
+</html>

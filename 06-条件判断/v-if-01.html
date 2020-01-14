@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h4 v-if="isShow">{{message}}</h4>
+    <h4 v-else>false时显示</h4>
+
+    <h4 v-if="score>=90">优秀</h4>
+    <h4 v-else-if="score>=80">良好</h4>
+    <h4 v-else-if="score>=70">一般</h4>
+    <h4 v-else-if="score>=60">不好</h4>
+    <h4 v-else>不及格</h4>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    let demo1=new Vue({
+        el:'#app',
+        data:{
+            message:'true时显示',
+            isShow:true ,
+            score:999
+        }
+    })
+</script>
+
+</body>
+</html>

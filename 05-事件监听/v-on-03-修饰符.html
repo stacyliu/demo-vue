@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        blueStyle{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    --------@click.stop--------
+    <div @click="div1Click" >
+        <h6>{{div1}}</h6>
+        <h6>{{btn1}}</h6>
+        <h6>解释：{{message1}}</h6>
+        <button @click="btn1Click">button1</button>
+    </div>
+
+    <div @click="div2Click" >
+        <h6>{{div2}}</h6>
+        <h6>{{btn2}}</h6>
+        <h6>解释：{{message2}}</h6>
+        <button @click.stop="btn2Click">button2</button>
+    </div>
+    --------@click.prevent--------
+    <div>
+        <form action="lisa">
+            <input type="submit" value="自动提交">
+            <input type="submit" value="手动提交" @click.prevent="myOwnSubmit">
+        </form>
+
+    </div>
+
+    --------@keyup.enter--------
+    <div>
+        <input type="text" @keyup.enter="keyup">
+    </div>
+    --------@keyup.once--------
+    <div>
+        <input type="text" @keyup.enter.once="keyup">
+    </div>
+
+</div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    let demo1=new Vue({
+        el:'#app',
+        data:{
+            div1:'div1状态',
+            btn1:'btn1状态',
+            message1:'',
+            div2:'div1状态',
+            btn2:'btn2状态',
+            message2:''
+        },
+        methods:{
+            div1Click(){
+                console.log("div1Click")
+                this.div1="!!!!!!!!!!div1Click"
+            },
+            btn1Click(){
+                console.log("Button1Click")
+                this.btn1="!!!!!!!!!!Button1Click"
+                this.message1='如果不特殊处理，点击事件冒泡 div1也接收到响应'
+            },
+            div2Click(){
+                console.log("div2Click")
+                this.div2="!!!!!!!!!!div2Click"
+            },
+            btn2Click(){
+                console.log("Button2Click")
+                this.btn2="!!!!!!!!!!Button2Click"
+                this.message2='@click.stop="btn2Click 不向上冒泡 div就不响应'
+            },
+            myOwnSubmit(){
+                //do something
+                console.log("myOwnSubmit")
+            },
+            keyup(){
+                console.log("keyup")
+            }
+        }
+    })
+</script>
+</body>
+
+</html>

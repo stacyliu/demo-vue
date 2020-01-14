@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+    拥有相同name 或者同一个v-model的几个radiobutton选项互斥 只能选一个  <br>
+    value给到data.sex字段了<br>
+    如果sex有默认值 且和radioinput的value相同 那个radioinput就会默认被选中 <br>
+    如果没默认值 或者默认值不是某个value 就不会被选中<br>
+    <label for="male">
+        <input name="sex" type="radio" id="male" value="男男男男" v-model="sex">男
+    </label>
+    <label for="female">
+        <input name="sex" type="radio" id="female" value="女女女女" v-model="sex">女
+    </label>
+    <h4>{{sex}}</h4>
+
+
+
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    let demo1=new Vue({
+        el:'#app',
+        data:{
+            message:'amazing vue',
+            sex:"男男男男"
+        }
+    })
+</script>
+</body>
+</html>

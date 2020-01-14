@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    {{message1}}<br>
+    v-model:<input type="text" v-model="message1"><br>
+    如果把input里的东西改掉 message也跟着一起改 message和input双向绑定
+    <br><br>
+    {{message2}}<br>
+    v-bind <input type="text" v-bind:value="message2"><br>
+    使用 v-bind只能显示根据message的变化而变化 但是改变input不能改变message
+    <br>
+    <br>
+    {{message3}}<br>
+    v-on:input+ v-bind<input type="text" :value="message3" @input="valueChange" >    change={{changed}}<br>
+    v-on:input+ v-bind<input type="text" :value="message3" @input="message3=$event.target.value" >    change={{changed}}<br>
+    使用 v-bind message使input改变 使用v-on:input input使message改变
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    let demo1=new Vue({
+        el:'#app',
+        data:{
+            message1:'message1',
+            message2:'message2',
+            message3:'message3',
+            changed:0,
+
+        },
+        methods:{
+            valueChange(event){
+                //调用的时候不加（）相当于获取了事件 加了括号反而拿不到event了
+                this.changed= this.changed+1
+                this.message3=event.target.value
+            }
+        }
+    })
+</script>
+</body>
+</html>
