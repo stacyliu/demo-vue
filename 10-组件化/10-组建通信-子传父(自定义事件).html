@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h4>你点击:{{id}}   {{name}}</h4>
+    //TODO:2.在使用子组件的时候 @事件名="处理函数" 不用传参 默认传参
+    <tag_cpnt1 @item_click="dealWithCpnt1Click"></tag_cpnt1>
+</div>
+
+<script src="../js/vue.js"></script>
+<template id="cpnt1_template">
+    <div>
+        <button v-for="i in categories" @click="btnClick(i)">{{i.name}}</button><br>
+    </div>
+</template>
+<script>
+    const cpnt1={
+        template:"#cpnt1_template",
+        data(){
+            return {
+                message:"ssssss",
+                categories:[
+                    {id:11111,name:"手机"},
+                    {id:22222,name:"电脑"},
+                    {id:33333,name:"女装"},
+                    {id:44444,name:"厨具"},
+                ]
+            }
+        },
+        methods:{
+            btnClick(i){
+
+                //todo:1.把i传给父组件this.$emit('事件名',参数)
+                this.$emit('item_click',i)
+            }
+        }
+    }
+    let demo1=new Vue({
+        el:'#app',
+        data:{
+            message:'amazing vue',
+            name:"",
+            id:0
+        },
+        components:{
+            tag_cpnt1:cpnt1,
+        },
+        methods:{
+            //TODO:3 在父组件的methods里 写处理函数
+            dealWithCpnt1Click(i){
+                console.log(i.name+" "+i.id);
+                this.id=i.id;
+                this.name=i.name
+
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h4>{{message}}</h4>
+    <tag_cpnt1 :childmessage="message"></tag_cpnt1>
+</div>
+
+<script src="../js/vue.js"></script>
+<template id="temp_cpnt1">
+    <div>
+        <h4>我是一个组件</h4>
+        name:{{childinfo.name}}<br>
+        age:{{childinfo.age}}<br>
+        props里的接收父组件变量的变量 必须是小写
+
+    </div>
+</template>
+<script>
+    const cpnt1={
+        template:"#temp_cpnt1",
+        props:{
+            childinfo:{
+                type:Object,
+                default(){
+                    return {
+                        name:"dafaultName",
+                        age:100
+                    }
+                }
+            },
+
+        }
+
+    }
+    let demo1=new Vue({
+        el:'#app',
+        data:{
+            message:'amazing vue',
+            info:{
+                name:"lisa",
+                age:18
+            }
+        },
+        components:{
+            tag_cpnt1:cpnt1
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    父组件有text 子组件有text 有input <br>
+    需求:子组件从父组件拿值显示在input上 随着子组件input改变 父子text都改变<br>
+
+    <div style="color: red">
+        <br>思路:
+        <br>h4展示childValue自己的值
+        <br>父传子 子拿到父的值存到childvaleu input绑定childValue @input调用方法改变childValue 同时子传父改变父的值$emit
+        <br>
+        <br>建立好父子组件
+        <br>1.父传子
+        <br>----在子创建props {childmsg}
+        <br>----父在用子的tag的时候 :childmsg=fathermsg
+        <br>2.子组件input和文案双向绑定
+        <br>----文案部分用子组件的data data的值=props.childmsg(实现值传递)
+        <br>----input部分的值 :value 绑定子组件的childmsg
+        <br>----input部分的事件@input 调用方法valueChange() 1:改变子组件的:value  this.childValue=event.target.value
+        <br>3.子传父:
+        <br>----input部分的事件@input 调用方法valueChange() 2:$emit this.$emit('我的事件',this.childValue)
+        <br>4.父展示子的改变数据
+        <br>----父在用子的tag的时候 @我的事件="dealWithinputChange"
+        <br>----dealWithinputChange(){}时修改父组件数据
+    </div>
+    <h4>父组件的message={{message}}</h4>
+    <tag_childcpn :childmsg="message" @input_change="dealWithinputChange"></tag_childcpn>
+</div>
+
+
+<template id="sub_template">
+    <div>
+
+        <h4 >子组件的message={{childValue}}</h4>
+        <input type="text"  :value="childValue" @input="valueChange()">
+    </div>
+</template>
+
+<script src="../js/vue.js"></script>
+
+<script>
+    let demo1=new Vue({
+        el:'#app',
+        data:{
+            message:'1234',
+        },
+        methods:{
+            dealWithinputChange(childValue){
+                console.log("change"+childValue)
+                this.message=childValue
+            }
+        },
+        components:{
+            tag_childcpn:{
+                template:"#sub_template",
+                data(){ //是自己的元素
+                    return {
+                        childValue:this.childmsg
+                    }
+                },
+                props:{//从父组件拿来的元素
+                    childmsg:{}
+                },
+                methods:{
+                    valueChange(){
+                        this.childValue=event.target.value
+                        this.$emit('input_change',this.childValue)
+                        console.log("111")
+                    }
+                }
+            },
+        }
+
+    })
+</script>
+</body>
+</html>

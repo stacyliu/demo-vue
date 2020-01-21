@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h4>{{message}}</h4>
+    所以不会冲突<br>
+    三个组件就有三个实例 因为实际使用的数据是data方法返回的对象 每个实例返回自己的对象 所以不会共用同一个
+    <tag_cpnt1></tag_cpnt1>
+    <tag_cpnt1></tag_cpnt1>
+    <tag_cpnt1></tag_cpnt1>
+
+</div>
+<template id="cpnt1">
+    <div>
+        互相不影响:{{count}}
+        <button @click="add()">+</button> <button @click="count--">-</button>
+        <br>
+        想要影响:{{obj.count2}}
+        <button @click="obj.count2++">+</button>
+
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+    const obj={
+        count2:0
+    }
+    Vue.component("tag_cpnt1",{
+        template:'#cpnt1',
+        data(){
+            return{
+                count:0,
+                obj
+            }
+        },
+        methods:{
+            add(){
+                return this.count++
+            },
+        }
+    })
+    let demo1=new Vue({
+        el:'#app',
+        data:{
+            message:'amazing vue',
+        }
+    })
+</script>
+</body>
+</html>

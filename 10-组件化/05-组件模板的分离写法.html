@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h4>{{message}}</h4>
+    <tag_cpnt1></tag_cpnt1>
+    <tag_cpnt2></tag_cpnt2>
+</div>
+
+<script type="text/x-template" id="cpnt1">
+    <div>
+        <h5>  script标签 type="text/x-template" id="xxxx"抽成模板 按照分离的写法注册组件</h5>
+    </div>
+</script>
+<template  id="cpnt2">
+    <div>
+        <h5>  template标签 id="xxxxx" 抽成模板 按照分离的写法注册组件</h5>
+    </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+    Vue.component("tag_cpnt1",{
+        template:"#cpnt1"
+    })
+    Vue.component("tag_cpnt2",{
+        template:"#cpnt2"
+    })
+
+    let demo1=new Vue({
+        el:'#app',
+        data:{
+            message:'amazing vue',
+        }
+    })
+</script>
+</body>
+</html>

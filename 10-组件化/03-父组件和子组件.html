@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h4>{{message}}</h4>
+
+    但是因为cpnt1是在cpnt2里注册的 不能单独渲染 只能在cpnt2里渲染<br>
+    <tag_cpnt1></tag_cpnt1>
+    =======================
+    <br>组件的又一种注册方式
+    <br>组件1在组件2里注册 就可以在组件2里使用
+    <br>组件2是父组件 组件1是子组件
+    <br><tag_cpnt2></tag_cpnt2>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    const cpnt1=Vue.extend({
+        template:`
+        <div>
+            <h5>组件11111</h5>
+        </div>
+        `,
+    })
+
+    const cpnt2=Vue.extend({
+        template:`
+        <div>
+            <h5>组件22222</h5>
+            <tag_cpnt1></tag_cpnt1>
+        </div>
+        `,
+
+        //TODO:组建的又一种注册方式
+        //TODO:组件1在组件2里注册 就可以在组件2里使用
+        components:{
+            tag_cpnt1:cpnt1,
+        }
+    })
+
+    let demo1=new Vue({
+        el:'#app',
+        data:{
+            message:'amazing vue',
+        },
+        components:{
+            //TODO:组件2注册成局部组件
+            tag_cpnt2:cpnt2,
+
+
+
+        }
+    })
+</script>
+</body>
+</html>

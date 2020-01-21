@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h4>没传vbind:childmessage</h4>
+    <tag_cpnt1 v-bind:childmovies="movies" ></tag_cpnt1>
+    =======================================
+    <h4>传了vbind:childmessage</h4>
+    <tag_cpnt1 v-bind:childmovies="movies" v-bind:childmessage="message"></tag_cpnt1>
+</div>
+
+<template id="cpnt_template1">
+    <div>
+        我是子组件<br>
+        childmovies={{childmovies}}<br>
+        childmessage={{childmessage}}
+    </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+    const cpnt1={
+        template:"#cpnt_template1",
+        props:{
+            childmovies:{
+                type:Array,
+                default:[]
+
+            },
+            childmessage:{
+                type:String, //父组件向子组件传递的类型
+                default:'我是默认值 如果使用的时候 没有把父的传给我 就展示默认值',//默认值
+                required:true //是不是必传属性
+            }
+        }
+
+    }
+    let demo1=new Vue({
+        el:'#app',
+        data:{
+            message:'amazing vue',
+            movies:["aaa","bbb","ccc","ddd"],
+
+        },
+        components:{
+            tag_cpnt1:cpnt1
+        }
+    })
+</script>
+</body>
+</html>

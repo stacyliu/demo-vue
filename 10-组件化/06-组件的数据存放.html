@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+    <h4>{{message}}</h4>
+
+    <tag_cpnt1></tag_cpnt1>
+    <tag_cpnt2></tag_cpnt2>
+</div>
+
+<script type="text/x-template" id="cpnt1">
+    <div>
+        <h5>  message是: {{message}}</h5>
+        <h5>  message111111是: {{message11111}}</h5>
+    </div>
+</script>
+
+<script src="../js/vue.js"></script>
+<script>
+    Vue.component("tag_cpnt1",{
+        template:"#cpnt1",
+        data(){
+            return{
+                message11111:"我是message1 专属于组件的变量 只有组件可以获取到 "
+            }
+        }
+    })
+
+    let demo1=new Vue({
+        el:'#app',
+        data:{
+            message:'我是message 我是全局的变量 组件无法直接获取我的值',
+        }
+    })
+</script>
+</body>
+</html>
