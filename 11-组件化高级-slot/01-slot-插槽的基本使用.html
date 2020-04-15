@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h4>{{message}}</h4>
+    <tag_cpnt1><button>按钮</button></tag_cpnt1>
+    <tag_cpnt1></tag_cpnt1>
+    <tag_cpnt1>大海是 <span style="color:blue">蓝色</span> 的</tag_cpnt1>
+    <tag_cpnt1></tag_cpnt1>
+    <tag_cpnt1><input type="checkbox">男</tag_cpnt1>
+    <tag_cpnt1><i>我是斜的</i></tag_cpnt1>
+
+
+</div>
+
+<script src="../js/vue.js"></script>
+<template id="template_cpnt1">
+    <div>
+        <br>---------------------
+        <h4>我是子组件</h4>
+        <input type="text">
+        <slot><i>我是默认值 如果没有指定就用默认值</i></slot>
+
+    </div>
+</template>
+<script>
+    let demo1=new Vue({
+        el:'#app',
+        data:{
+            message:'amazing vue',
+        },
+        components:{
+            tag_cpnt1:{
+                template:template_cpnt1,
+            }
+        }
+    })
+</script>
+</body>
+</html>

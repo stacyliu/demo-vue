@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    1.给slot 设置name属性
+    2.在使用时替换换slot时 制定替换name为什么的slot
+    <tag_cpnt1></tag_cpnt1>
+    <tag_cpnt1> 无名插槽</tag_cpnt1>
+    <tag_cpnt1><div slot="slot1">替换slot1</div></tag_cpnt1>
+    <tag_cpnt1><button slot="slot3">我是333333333</button></tag_cpnt1>
+
+</div>
+
+<script src="../js/vue.js"></script>
+<template id="template_cpnt1">
+    <div>
+        <br>----------我是一个有三个插槽的组件-----------
+        <br><slot name="slot1">slot1</slot>
+        <br><slot name="slot2">slot2</slot>
+        <br><slot name="slot3">slot3</slot>
+        <br><slot>no name slot</slot>
+
+    </div>
+</template>
+<script>
+    let demo1=new Vue({
+        el:'#app',
+        data:{
+            message:'amazing vue',
+        },
+        components:{
+            tag_cpnt1:{
+                template:template_cpnt1,
+            }
+        }
+    })
+</script>
+</body>
+</html>

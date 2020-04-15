@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <tag_cpnt1 ref="ref_cpnt1"></tag_cpnt1>
+    <tag_cpnt1 ref="ref_cpnt2"></tag_cpnt1>
+    <tag_cpnt1 ref="ref_cpnt3"></tag_cpnt1>
+    {{message}}<br>
+    <button @click="btnClick">访问</button>
+    <br>有两种方式
+    <br>1.this.$children[0].showMessage()
+    <br>2.this.$refs.ref_cpn3.showMessage()
+</div>
+
+<template id="cpnt_template">
+    <div>
+        我是子组件 {{childmessage}}
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+    let demo1=new Vue({
+        el:'#app',
+        data:{
+            message:'amazing vue',
+
+        },
+        methods:{
+            btnClick(){
+                //TODO:方法1:通过$children
+                console.log("btnclick  "+ this.$children)
+                console.log(this.$children)
+
+                //TODO:方法2:通过$refs
+                this.$refs.ref_cpnt1.showMessage()
+                this.message= this.$refs.ref_cpnt1.name
+
+
+            }
+        },
+        components:{
+            tag_cpnt1:{
+                template:cpnt_template,
+                methods:{
+                    showMessage(){
+                        this.childmessage=this.childmessage+1
+                        console.log("shown")
+                    }
+                },
+                data(){
+                    return{
+                        childmessage:0,
+                        name:"tag_cpnt1"
+                    }
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

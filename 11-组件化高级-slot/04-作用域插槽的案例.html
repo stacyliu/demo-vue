@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h4>{{message}}</h4>
+    <div style="color: red">
+    <br>插槽就是子组件有一部分是slot 在父组件用子组件tag的时候才传递一些信息
+    <br>作用域插槽相当于带数据源的插槽
+    <br>使用方法是:
+    <br>1.子组件的slot标签定义数据源的名字和实际数据源 :数据源名称="实际数据源"
+    <br>:myslotresources="languages"
+    <br>2.子组件命名name="myslot1"
+    <br>3.父组件在使用子组件标签时 使用v-slot:myslot1=xxxx(xxxx是什么都行 比如mydata)
+    <br>4.通过mydata:myslotresources获取子组件的数据源 并使用
+    <br>
+    <br>
+    </div>
+    <tag_cpnt>
+        <template v-slot:myslot1="mydata">
+            mydata={{mydata}}<br>
+            <br>
+            <span v-for="i in mydata.myslotresources">{{i}}--</span>
+        </template>
+    </tag_cpnt>
+
+    ---------------------------------------
+
+    <tag_cpnt></tag_cpnt>
+</div>
+
+<script src="../js/vue.js"></script>
+<template id="template_cpnt">
+    <div>
+        <slot :myslotresources="languages" name="myslot1">
+            <ul>
+                <li v-for="i in languages">{{i}}</li>
+            </ul>
+        </slot>
+    </div>
+</template>
+<script>
+    let demo1=new Vue({
+        el:'#app',
+        data:{
+            message:'amazing vue',
+        },
+        components:{
+            tag_cpnt:{
+                template:template_cpnt,
+                data(){
+                    return{
+                        languages:['Java','Python','Javascript','Go','C#','Swift']
+                    }
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

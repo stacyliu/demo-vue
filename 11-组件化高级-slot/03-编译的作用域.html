@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h4>{{message}}</h4>
+    <tag_cpnt1 v-show="isShow"></tag_cpnt1>
+
+</div>
+
+<template id="template_cpnt1">
+    <div>
+        我是子组件
+        <button v-show="isShow">哈哈哈哈</button>
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+    let demo1=new Vue({
+        el:'#app',
+        data:{
+            message:'amazing vue',
+            isShow:true,
+        },
+        components:{
+            tag_cpnt1:{
+                template:template_cpnt1,
+                data(){
+                    return {
+                        isShow:false
+                    }
+                }
+
+            }
+        }
+    })
+</script>
+</body>
+</html>
