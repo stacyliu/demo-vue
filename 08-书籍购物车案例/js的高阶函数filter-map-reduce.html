@@ -6,10 +6,11 @@
 </head>
 <body>
 <div id="app">
-    <h4>{{testFilter()}}</h4>
-    <h4>{{testMap()}}</h4>
-    <h4>{{testReduce()}}</h4>
-    <h4>{{testfull()}}</h4>
+    list:[12,3,4,94,7,8]<br>
+    过滤小于10 使用filter:<h4>{{testFilter()}}</h4>
+    并且每个数字乘2 使用map:<h4>{{testMap()}}</h4>
+    把所有数据做加法 使用reduce:<h4>{{testReduce()}}</h4>
+    三种合并卸载一个方法里 :<h4>{{testfull()}}</h4>
 </div>
 
 <script src="../js/vue.js"></script>
@@ -43,8 +44,8 @@
                 return this.doubleNewList.reduce(function (previous , i) {
                     return previous+i
                 },0)
-                //todo：i每次取 this.doubleNewList的值
-                //todo：44行的0 其实是previous的初始值
+                //todo：i每次取this.doubleNewList的值
+                //todo：第46行的0 其实是previous的初始值
             },
             testfull(){
                 return this.list.filter(function(i){

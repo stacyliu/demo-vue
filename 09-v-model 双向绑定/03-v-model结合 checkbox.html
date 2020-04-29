@@ -8,25 +8,29 @@
 <div id="app">
     单选框对应 boolean
     多选框对应数组
-    <h4>{{isAgree}}</h4>
+    <h4>同意协议状态:{{isAgree}}</h4>
     <label for="agree">
         <input type="checkbox" id="agree" v-model="isAgree"> 同意协议
         <button :disabled="!isAgree" >下一步</button>
+    </label>
+    <br>
+    <br><br>
 
-    </label><br>
-    {{hobbies}}<br>
+    <br>
+
+    {{hobbies}}
+    <br>
 
 <!--    <input type="checkbox" value="看书" v-model="hobbies">看书-->
 <!--    <input type="checkbox" value="看电影" v-model="hobbies">看电影-->
 <!--    <input type="checkbox" value="听歌" v-model="hobbies">听歌-->
 <!--    <input type="checkbox" value="睡觉" v-model="hobbies">睡觉-->
 <!--    <input type="checkbox" value="运动" v-model="hobbies">运动-->
+    checkbox和 hobbies双向绑定 如果在console里 demo1.hobbies.pop() 也可以改变checkbox<br>
+    value是被选中拿到的值 <br>
     <label v-for="i in allHobbies" v-bind:for="i">
 
         <input type="checkbox" :value="i" v-model="hobbies" v-bind:id="i">{{i}}
-
-
-
 
     </label>
 

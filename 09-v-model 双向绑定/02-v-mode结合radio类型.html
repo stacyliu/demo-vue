@@ -6,7 +6,7 @@
 </head>
 <body>
 <div id="app">
-
+    v-model双向绑定 sex和radiobutton被绑定 <br>
     拥有相同name 或者同一个v-model的几个radiobutton选项互斥 只能选一个  <br>
     value给到data.sex字段了<br>
     如果sex有默认值 且和radioinput的value相同 那个radioinput就会默认被选中 <br>
@@ -17,7 +17,7 @@
     <label for="female">
         <input name="sex" type="radio" id="female" value="女女女女" v-model="sex">女
     </label>
-    <h4>{{sex}}</h4>
+    <h4>性别= {{sex}}</h4>
 
 
 

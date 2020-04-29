@@ -9,13 +9,16 @@
     <h4>没传vbind:childmessage</h4>
     <tag_cpnt1 v-bind:childmovies="movies" ></tag_cpnt1>
     =======================================
-    <h4>传了vbind:childmessage</h4>
+    <h4>传了vbind:childmessage childmessage跟随传过来的message变化 </h4>
     <tag_cpnt1 v-bind:childmovies="movies" v-bind:childmessage="message"></tag_cpnt1>
+    <br>
+    解释:message是父组件的属性 <br>
+    怎么传递给子组件tag_cpnt1呢? 使用v-bing:子组件变量名:父组件变量名
 </div>
 
 <template id="cpnt_template1">
     <div>
-        我是子组件<br>
+        我是cpnt1的子组件<br>
         childmovies={{childmovies}}<br>
         childmessage={{childmessage}}
     </div>

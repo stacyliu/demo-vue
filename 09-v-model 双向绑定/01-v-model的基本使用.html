@@ -12,12 +12,13 @@
     <br><br>
     {{message2}}<br>
     v-bind <input type="text" v-bind:value="message2"><br>
-    使用 v-bind只能显示根据message的变化而变化 但是改变input不能改变message
+    使用 v-bind只能显示根据message的变化而变化 但是改变input不能改变message<br>
+    demo1.message2="www"
     <br>
     <br>
     {{message3}}<br>
-    v-on:input+ v-bind<input type="text" :value="message3" @input="valueChange" >    change={{changed}}<br>
-    v-on:input+ v-bind<input type="text" :value="message3" @input="message3=$event.target.value" >    change={{changed}}<br>
+    v-on:input + v-bind:  <input type="text" :value="message3" @input="valueChange" >    change={{changed}}<br>
+    v-on:input + v-bind:  <input type="text" :value="message3" @input="message3=$event.target.value" >    change={{changed}}<br>
     使用 v-bind message使input改变 使用v-on:input input使message改变
 </div>
 

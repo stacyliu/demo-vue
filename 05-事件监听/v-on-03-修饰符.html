@@ -25,20 +25,25 @@
         <h6>解释：{{message2}}</h6>
         <button @click.stop="btn2Click">button2</button>
     </div>
-    --------@click.prevent--------
+    --------@click.prevent阻止默认事件--------
     <div>
+        自定提交会直接提交到lisa这个页面<br>
+        手动提交会调myOwnSubmit这个方法 <br>
+        开发者想做其他事情 就可以写在方法里 包括提交到lisa页面或打log
         <form action="lisa">
-            <input type="submit" value="自动提交">
-            <input type="submit" value="手动提交" @click.prevent="myOwnSubmit">
+            <input type="submit" value="自动提交"><br>
+            <input type="submit" value="手动提交并+默认事件(提交)" @click="myOwnSubmit"><br>
+            <input type="submit" value="手动提交并阻止默认事件(提交)" @click.prevent="myOwnSubmit"><br>
         </form>
-
     </div>
 
-    --------@keyup.enter--------
+
+
+    --------@keyup.enter监听回车的点击 每一次打log--------
     <div>
         <input type="text" @keyup.enter="keyup">
     </div>
-    --------@keyup.once--------
+    --------@keyup.once监听回车的点击 仅一次打log--------
     <div>
         <input type="text" @keyup.enter.once="keyup">
     </div>
@@ -81,7 +86,7 @@
                 console.log("myOwnSubmit")
             },
             keyup(){
-                console.log("keyup")
+                console.log("回车键 keyup 一次")
             }
         }
     })

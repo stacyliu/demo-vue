@@ -6,9 +6,13 @@
 </head>
 <body>
 <div id="app">
-    <h4>{{message}}</h4>
-    所以不会冲突<br>
-    三个组件就有三个实例 因为实际使用的数据是data方法返回的对象 每个实例返回自己的对象 所以不会共用同一个
+
+    三个组件就有三个实例 因为实际使用的数据是data方法返回的对象 <br>
+    每个实例返回自己的对象 所以不会共用同一个<br>
+    因此 有三个count 不会冲突<br>
+    <br>
+    但是三个实例返回的是同一个obj 三个都操作obj.count2 因此会互相影响<br>
+    <br>
     <tag_cpnt1></tag_cpnt1>
     <tag_cpnt1></tag_cpnt1>
     <tag_cpnt1></tag_cpnt1>

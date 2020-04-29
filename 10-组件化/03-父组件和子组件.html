@@ -6,15 +6,19 @@
 </head>
 <body>
 <div id="app">
-    <h4>{{message}}</h4>
-
-    但是因为cpnt1是在cpnt2里注册的 不能单独渲染 只能在cpnt2里渲染<br>
+    例子:单独使用tag_cpnt1 :<br>
     <tag_cpnt1></tag_cpnt1>
+    解释:因为cpnt1是在cpnt2里注册的 不能单独渲染 所以看不到 只能在cpnt2里渲染<br>
+    =======================
+    <br>例子:单独使用tag_cpnt2 :
+    <br><tag_cpnt2></tag_cpnt2>
+    <br>解释:可以看到组件1和组件2因为1在2里定义 使用2的时候也使用了1<br>
     =======================
     <br>组件的又一种注册方式
     <br>组件1在组件2里注册 就可以在组件2里使用
-    <br>组件2是父组件 组件1是子组件
-    <br><tag_cpnt2></tag_cpnt2>
+    <br>组件2在el:'#app'里注册 只能在app里用
+    <br>2是父组件 1是子组件
+
 </div>
 
 <script src="../js/vue.js"></script>
